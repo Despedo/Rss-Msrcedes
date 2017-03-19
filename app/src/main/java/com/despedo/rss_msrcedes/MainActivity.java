@@ -16,11 +16,6 @@ import android.view.MenuItem;
 
 import com.despedo.rss_msrcedes.adapter.TabsFragmentAdapter;
 
-
-/**
- * Created by Despedo on 18.03.2017.
- */
-
 public class MainActivity extends AppCompatActivity {
 
     private static final int LAYOUT = R.layout.activity_main;
@@ -76,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 drawerLayout.closeDrawers();
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.actionStoriesItem:
                         showStoriesTab();
                         break;
@@ -92,15 +87,15 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private void showStoriesTab(){
+    private void showStoriesTab() {
         viewPager.setCurrentItem(Constants.TAB_ONE);
     }
 
-    private void showVideoTab(){
+    private void showVideoTab() {
         viewPager.setCurrentItem(Constants.TAB_TWO);
     }
 
-    private void showFavouritesTab(){
+    private void showFavouritesTab() {
         viewPager.setCurrentItem(Constants.TAB_THREE);
     }
 }

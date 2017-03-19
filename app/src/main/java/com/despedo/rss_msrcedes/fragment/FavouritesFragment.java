@@ -9,14 +9,10 @@ import android.view.ViewGroup;
 
 import com.despedo.rss_msrcedes.R;
 
-/**
- * Created by Despedo on 19.03.2017.
- */
-
-public class FavouritesFragment extends AbstractFragment{
+public class FavouritesFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_favourites;
 
-    public static FavouritesFragment getInstance(Context context){
+    public static FavouritesFragment getInstance(Context context) {
         Bundle args = new Bundle();
         FavouritesFragment fragment = new FavouritesFragment();
         fragment.setArguments(args);

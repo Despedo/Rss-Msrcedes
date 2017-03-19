@@ -9,19 +9,15 @@ import android.view.ViewGroup;
 
 import com.despedo.rss_msrcedes.R;
 
-/**
- * Created by Despedo on 19.03.2017.
- */
-
-public class VideoFragment extends AbstractFragment{
+public class VideoFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_video;
 
-    public static VideoFragment getInstance(Context context){
+    public static VideoFragment getInstance(Context context) {
         Bundle args = new Bundle();
         VideoFragment fragment = new VideoFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
-        fragment.setTitle(context.getString(R.string.stories));
+        fragment.setTitle(context.getString(R.string.video));
 
         return fragment;
     }

@@ -13,10 +13,6 @@ import com.despedo.rss_msrcedes.fragment.VideoFragment;
 import java.util.HashMap;
 import java.util.Map;
 
-/**
- * Created by Despedo on 19.03.2017.
- */
-
 public class TabsFragmentAdapter extends FragmentPagerAdapter {
 
     private Map<Integer, AbstractFragment> tabs;
