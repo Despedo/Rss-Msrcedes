@@ -14,7 +14,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.despedo.rss_msrcedes.adapter.TabsAdapter;
+import com.despedo.rss_msrcedes.adapter.TabsFragmentAdapter;
 
 
 /**
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initTabs() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        TabsAdapter adapter = new TabsAdapter(getSupportFragmentManager(), getApplicationContext());
+        TabsFragmentAdapter adapter = new TabsFragmentAdapter(getSupportFragmentManager(), getApplicationContext());
         viewPager.setAdapter(adapter);
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);

@@ -1,8 +1,8 @@
 package com.despedo.rss_msrcedes.fragment;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +13,15 @@ import com.despedo.rss_msrcedes.R;
  * Created by Despedo on 19.03.2017.
  */
 
-public class ExampleFragment extends Fragment {
-    private static final int LAYOUT = R.layout.fragment_example;
-    private View view;
+public class FavouritesFragment extends AbstractFragment{
+    private static final int LAYOUT = R.layout.fragment_favourites;
 
-
-    public static ExampleFragment getInstance(){
+    public static FavouritesFragment getInstance(Context context){
         Bundle args = new Bundle();
-        ExampleFragment fragment = new ExampleFragment();
+        FavouritesFragment fragment = new FavouritesFragment();
         fragment.setArguments(args);
+        fragment.setContext(context);
+        fragment.setTitle(context.getString(R.string.favourites));
 
         return fragment;
     }
@@ -32,4 +32,9 @@ public class ExampleFragment extends Fragment {
         view = inflater.inflate(LAYOUT, container, false);
         return view;
     }
+
+    public void setContext(Context context) {
+        this.context = context;
+    }
+
 }
