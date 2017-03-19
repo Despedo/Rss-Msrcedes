@@ -2,4 +2,9 @@
     <string name="app_name">Rss-Msrcedes Beta</string>
     <string name="search">Search</string>
     <string name="news">News</string>
+    <string name="stories">Stories</string>
+    <string name="video">Video</string>
+    <string name="favourites">Favourites</string>
+    <string name="about">About</string>
+    <string name="settings">Settings</string>
 </resources>

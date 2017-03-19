@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/stories"
+        android:icon="@drawable/format_list_bulleted"/>
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/video"
+        android:icon="@drawable/video"/>
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/favourites"
+        android:icon="@drawable/star"/>
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/settings"
+        android:icon="@drawable/settings"/>
+
+    <item
+        android:orderInCategory="1"
+        android:title="@string/about"
+        android:icon="@drawable/information"/>
+
+</menu>
