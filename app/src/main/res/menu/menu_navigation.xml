@@ -2,26 +2,31 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/actionStoriesItem"
         android:orderInCategory="1"
         android:title="@string/stories"
         android:icon="@drawable/format_list_bulleted"/>
 
     <item
+        android:id="@+id/actionVideoItem"
         android:orderInCategory="1"
         android:title="@string/video"
         android:icon="@drawable/video"/>
 
     <item
+        android:id="@+id/actionFavouritesItem"
         android:orderInCategory="1"
         android:title="@string/favourites"
         android:icon="@drawable/star"/>
 
     <item
+        android:id="@+id/actionSettingsItem"
         android:orderInCategory="1"
         android:title="@string/settings"
         android:icon="@drawable/settings"/>
 
     <item
+        android:id="@+id/actionAboutItem"
         android:orderInCategory="1"
         android:title="@string/about"
         android:icon="@drawable/information"/>
