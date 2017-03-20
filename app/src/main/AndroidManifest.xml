@@ -2,6 +2,8 @@
 
     package="com.despedo.rss_msrcedes">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"

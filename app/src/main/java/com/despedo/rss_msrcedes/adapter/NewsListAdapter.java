@@ -36,6 +36,10 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.NewsV
         return data.size();
     }
 
+    public void setData(List<NewsDTO> data) {
+        this.data = data;
+    }
+
     public static class NewsViewHolder extends RecyclerView.ViewHolder{
 
         CardView cardView;

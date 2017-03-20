@@ -5,12 +5,14 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.despedo.rss_msrcedes.dto.NewsDTO;
 import com.despedo.rss_msrcedes.fragment.AbstractFragment;
 import com.despedo.rss_msrcedes.fragment.FavouritesFragment;
 import com.despedo.rss_msrcedes.fragment.StoriesFragment;
 import com.despedo.rss_msrcedes.fragment.VideoFragment;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class TabsFragmentAdapter extends FragmentPagerAdapter {
@@ -18,10 +20,22 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
     private Map<Integer, AbstractFragment> tabs;
     private Context context;
 
-    public TabsFragmentAdapter(FragmentManager fm, Context context) {
+    private List<NewsDTO> data;
+
+    private StoriesFragment storiesFragment;
+    private VideoFragment videoFragment;
+    private FavouritesFragment favouritesFragment;
+
+    public void setData(List<NewsDTO> data) {
+        this.data = data;
+        storiesFragment.refreshData(data);
+    }
+
+    public TabsFragmentAdapter(Context context, FragmentManager fm, List<NewsDTO> data) {
         super(fm);
+        this.data = data;
         this.context = context;
-        initTabsMap();
+        initTabsMap(context);
     }
 
     @Override
@@ -39,10 +53,13 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
         return tabs.size();
     }
 
-    private void initTabsMap() {
+    private void initTabsMap(Context context) {
         tabs = new HashMap<>();
-        tabs.put(0, StoriesFragment.getInstance(context));
-        tabs.put(1, VideoFragment.getInstance(context));
-        tabs.put(2, FavouritesFragment.getInstance(context));
+        storiesFragment = StoriesFragment.getInstance(context, data);
+        tabs.put(0, storiesFragment);
+        videoFragment = VideoFragment.getInstance(context);
+        tabs.put(1, videoFragment);
+        favouritesFragment = FavouritesFragment.getInstance(context);
+        tabs.put(2, favouritesFragment);
     }
 }

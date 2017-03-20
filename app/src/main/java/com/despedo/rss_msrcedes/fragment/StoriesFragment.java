@@ -18,13 +18,16 @@ import java.util.List;
 
 public class StoriesFragment extends AbstractFragment{
     private static final int LAYOUT = R.layout.fragment_stories;
+    private List<NewsDTO> data;
+    private NewsListAdapter newsListAdapter;
 
-    public static StoriesFragment getInstance(Context context){
+    public static StoriesFragment getInstance(Context context, List<NewsDTO> data){
         Bundle args = new Bundle();
         StoriesFragment fragment = new StoriesFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
         fragment.setTitle(context.getString(R.string.stories));
+        fragment.setData(data);
 
         return fragment;
     }
@@ -37,31 +40,23 @@ public class StoriesFragment extends AbstractFragment{
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleView);
         rv.setLayoutManager(new LinearLayoutManager(context));
-        rv.setAdapter(new NewsListAdapter(mock()));
+        newsListAdapter = new NewsListAdapter(data);
+        rv.setAdapter(newsListAdapter);
 
         return view;
-    }
-
-
-    private List<NewsDTO> mock(){
-        List<NewsDTO> data = new ArrayList<>();
-        data.add(new NewsDTO("id 1", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 2", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 3", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 4", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 5", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 6", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 7", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 8", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 9", "Link", "name", "description", "cover", "top", "createdAt"));
-        data.add(new NewsDTO("id 10", "Link", "name", "description", "cover", "top", "createdAt"));
-
-        return data;
     }
 
     public void setContext(Context context) {
         this.context = context;
     }
 
+    public void setData(List<NewsDTO> data) {
+        this.data = data;
+    }
 
+    public void refreshData(List<NewsDTO> data){
+        newsListAdapter.setData(data);
+        newsListAdapter.notifyDataSetChanged();
+
+    }
 }
