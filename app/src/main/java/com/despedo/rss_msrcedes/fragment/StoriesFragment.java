@@ -13,15 +13,14 @@ import com.despedo.rss_msrcedes.R;
 import com.despedo.rss_msrcedes.adapter.NewsListAdapter;
 import com.despedo.rss_msrcedes.dto.NewsDTO;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class StoriesFragment extends AbstractFragment{
+public class StoriesFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_stories;
     private List<NewsDTO> data;
     private NewsListAdapter newsListAdapter;
 
-    public static StoriesFragment getInstance(Context context, List<NewsDTO> data){
+    public static StoriesFragment getInstance(Context context, List<NewsDTO> data) {
         Bundle args = new Bundle();
         StoriesFragment fragment = new StoriesFragment();
         fragment.setArguments(args);
@@ -37,8 +36,7 @@ public class StoriesFragment extends AbstractFragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(LAYOUT, container, false);
 
-
-        RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleView);
+        RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleViewStories);
         rv.setLayoutManager(new LinearLayoutManager(context));
         newsListAdapter = new NewsListAdapter(data);
         rv.setAdapter(newsListAdapter);
@@ -54,9 +52,8 @@ public class StoriesFragment extends AbstractFragment{
         this.data = data;
     }
 
-    public void refreshData(List<NewsDTO> data){
+    public void refreshData(List<NewsDTO> data) {
         newsListAdapter.setData(data);
         newsListAdapter.notifyDataSetChanged();
-
     }
 }

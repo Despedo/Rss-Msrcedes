@@ -12,7 +12,7 @@ import com.despedo.rss_msrcedes.dto.NewsDTO;
 
 import java.util.List;
 
-public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.NewsViewHolder> {
+public class NewsListAdapter extends RecyclerView.Adapter<NewsListAdapter.NewsViewHolder> {
 
     private List<NewsDTO> data;
 
@@ -28,7 +28,11 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.NewsV
 
     @Override
     public void onBindViewHolder(NewsViewHolder holder, int position) {
-        holder.title.setText(data.get(position).getName());
+        holder.name.setText(data.get(position).getName());
+        String shortLink = data.get(position).getLink();
+        shortLink = shortLink.substring(11, shortLink.indexOf("/", 10));
+        shortLink = shortLink.replaceFirst(shortLink.subSequence(0, 1).toString(), shortLink.subSequence(0, 1).toString().toUpperCase());
+        holder.link.setText(shortLink);
     }
 
     @Override
@@ -40,16 +44,18 @@ public class NewsListAdapter  extends RecyclerView.Adapter<NewsListAdapter.NewsV
         this.data = data;
     }
 
-    public static class NewsViewHolder extends RecyclerView.ViewHolder{
+    public static class NewsViewHolder extends RecyclerView.ViewHolder {
 
         CardView cardView;
-        TextView title;
+        TextView name;
+        TextView link;
 
         public NewsViewHolder(View itemView) {
             super(itemView);
 
             cardView = (CardView) itemView.findViewById(R.id.cardView);
-            title = (TextView) itemView.findViewById(R.id.title);
+            name = (TextView) itemView.findViewById(R.id.name);
+            link = (TextView) itemView.findViewById(R.id.link);
         }
     }
 

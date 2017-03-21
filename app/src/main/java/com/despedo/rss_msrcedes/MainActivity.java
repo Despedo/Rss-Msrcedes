@@ -30,14 +30,19 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private static final int LAYOUT = R.layout.activity_main;
+
     private Toolbar toolbar;
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
+
     private TabsFragmentAdapter adapter;
+
+    private List<NewsDTO> data = new ArrayList<>();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+
         setTheme(R.style.AppDefault);
         super.onCreate(savedInstanceState);
         setContentView(LAYOUT);
@@ -71,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabLayout);
         tabLayout.setupWithViewPager(viewPager);
+
     }
 
     private void initNavigationView() {
@@ -124,13 +130,12 @@ public class MainActivity extends AppCompatActivity {
             pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
-
         }
 
         @Override
         protected List<NewsDTO> doInBackground(Void... params) {
 
-            List<NewsDTO> data = new ArrayList<>();
+
 
             HttpHandler sh = new HttpHandler();
 

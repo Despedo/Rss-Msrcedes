@@ -26,16 +26,12 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
     private VideoFragment videoFragment;
     private FavouritesFragment favouritesFragment;
 
-    public void setData(List<NewsDTO> data) {
-        this.data = data;
-        storiesFragment.refreshData(data);
-    }
 
     public TabsFragmentAdapter(Context context, FragmentManager fm, List<NewsDTO> data) {
         super(fm);
         this.data = data;
         this.context = context;
-        initTabsMap(context);
+        initTabsMap();
     }
 
     @Override
@@ -53,13 +49,21 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
         return tabs.size();
     }
 
-    private void initTabsMap(Context context) {
+    private void initTabsMap() {
         tabs = new HashMap<>();
         storiesFragment = StoriesFragment.getInstance(context, data);
+        videoFragment = VideoFragment.getInstance(context, data);
+        favouritesFragment = FavouritesFragment.getInstance(context, data);
+
         tabs.put(0, storiesFragment);
-        videoFragment = VideoFragment.getInstance(context);
-        tabs.put(1, videoFragment);
-        favouritesFragment = FavouritesFragment.getInstance(context);
-        tabs.put(2, favouritesFragment);
+        tabs.put(1, favouritesFragment);
+        tabs.put(2, videoFragment);
+    }
+
+    public void setData(List<NewsDTO> data) {
+        this.data = data;
+        storiesFragment.refreshData(data);
+        favouritesFragment.refreshData(data);
+        videoFragment.refreshData(data);
     }
 }
