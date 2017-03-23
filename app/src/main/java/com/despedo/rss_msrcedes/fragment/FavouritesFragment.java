@@ -20,7 +20,7 @@ public class FavouritesFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_favourites;
 
 
-    public static FavouritesFragment getInstance(Context context, List<NewsDTO> data) {
+    public static FavouritesFragment getInstance(Context context) {
         Bundle args = new Bundle();
         FavouritesFragment fragment = new FavouritesFragment();
         fragment.setArguments(args);

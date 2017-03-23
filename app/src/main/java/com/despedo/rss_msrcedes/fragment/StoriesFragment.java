@@ -18,16 +18,14 @@ import java.util.List;
 
 public class StoriesFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_stories;
-    private List<NewsDTO> data;
     private NewsListAdapter newsListAdapter;
 
-    public static StoriesFragment getInstance(Context context, List<NewsDTO> data) {
+    public static StoriesFragment getInstance(Context context) {
         Bundle args = new Bundle();
         StoriesFragment fragment = new StoriesFragment();
         fragment.setArguments(args);
         fragment.setContext(context);
         fragment.setTitle(context.getString(R.string.stories));
-        fragment.setData(data);
 
         return fragment;
     }
@@ -39,7 +37,7 @@ public class StoriesFragment extends AbstractFragment {
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleViewStories);
         rv.setLayoutManager(new LinearLayoutManager(context));
-        newsListAdapter = new NewsListAdapter(data);
+        newsListAdapter = new NewsListAdapter(NewsHolder.getData());
         rv.setAdapter(newsListAdapter);
 
         return view;
@@ -55,9 +53,6 @@ public class StoriesFragment extends AbstractFragment {
         this.context = context;
     }
 
-    public void setData(List<NewsDTO> data) {
-        this.data = data;
-    }
 
     public void refreshData(List<NewsDTO> data) {
         newsListAdapter.setData(data);

@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initTabs() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        tabsFragmentAdapter = new TabsFragmentAdapter(getApplicationContext(), getSupportFragmentManager(), new ArrayList<NewsDTO>());
+        tabsFragmentAdapter = new TabsFragmentAdapter(getApplicationContext(), getSupportFragmentManager());
         viewPager.setAdapter(tabsFragmentAdapter);
 
         new JSONParse().execute();
@@ -138,7 +138,6 @@ public class MainActivity extends AppCompatActivity {
         protected List<NewsDTO> doInBackground(Void... params) {
 
 
-
             HttpHandler sh = new HttpHandler();
 
             String jsonStr = sh.makeServiceCall(Constants.URL);
@@ -193,8 +192,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<NewsDTO> data) {
             if (pDialog.isShowing())
                 pDialog.dismiss();
-            tabsFragmentAdapter.setData(data);
             newsHolder.setData(data);
+            tabsFragmentAdapter.refreshFragmentsData();
         }
     }
 }

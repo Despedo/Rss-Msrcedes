@@ -5,14 +5,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.despedo.rss_msrcedes.dto.NewsDTO;
+import com.despedo.rss_msrcedes.NewsHolder;
 import com.despedo.rss_msrcedes.fragment.AbstractFragment;
 import com.despedo.rss_msrcedes.fragment.FavouritesFragment;
 import com.despedo.rss_msrcedes.fragment.StoriesFragment;
 import com.despedo.rss_msrcedes.fragment.VideoFragment;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class TabsFragmentAdapter extends FragmentPagerAdapter {
@@ -20,16 +19,13 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
     private Map<Integer, AbstractFragment> tabs;
     private Context context;
 
-    private List<NewsDTO> data;
-
     private StoriesFragment storiesFragment;
     private VideoFragment videoFragment;
     private FavouritesFragment favouritesFragment;
 
 
-    public TabsFragmentAdapter(Context context, FragmentManager fm, List<NewsDTO> data) {
+    public TabsFragmentAdapter(Context context, FragmentManager fm) {
         super(fm);
-        this.data = data;
         this.context = context;
         initTabsMap();
     }
@@ -51,17 +47,16 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
 
     private void initTabsMap() {
         tabs = new HashMap<>();
-        storiesFragment = StoriesFragment.getInstance(context, data);
-        videoFragment = VideoFragment.getInstance(context, data);
-        favouritesFragment = FavouritesFragment.getInstance(context, data);
+        storiesFragment = StoriesFragment.getInstance(context);
+        videoFragment = VideoFragment.getInstance(context);
+        favouritesFragment = FavouritesFragment.getInstance(context);
 
         tabs.put(0, storiesFragment);
         tabs.put(1, favouritesFragment);
         tabs.put(2, videoFragment);
     }
 
-    public void setData(List<NewsDTO> data) {
-        this.data = data;
-        storiesFragment.refreshData(data);
+    public void refreshFragmentsData() {
+        storiesFragment.refreshData(NewsHolder.getData());
     }
 }

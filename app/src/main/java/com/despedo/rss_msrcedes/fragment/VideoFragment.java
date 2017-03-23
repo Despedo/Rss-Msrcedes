@@ -19,7 +19,7 @@ import java.util.List;
 public class VideoFragment extends AbstractFragment {
     private static final int LAYOUT = R.layout.fragment_video;
 
-    public static VideoFragment getInstance(Context context, List<NewsDTO> data) {
+    public static VideoFragment getInstance(Context context) {
         Bundle args = new Bundle();
         VideoFragment fragment = new VideoFragment();
         fragment.setArguments(args);
