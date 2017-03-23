@@ -63,7 +63,5 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
     public void setData(List<NewsDTO> data) {
         this.data = data;
         storiesFragment.refreshData(data);
-        favouritesFragment.refreshData(data);
-        videoFragment.refreshData(data);
     }
 }

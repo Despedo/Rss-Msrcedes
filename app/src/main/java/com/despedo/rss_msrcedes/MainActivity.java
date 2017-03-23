@@ -35,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private ViewPager viewPager;
 
-    private TabsFragmentAdapter adapter;
+    private TabsFragmentAdapter tabsFragmentAdapter;
 
     private List<NewsDTO> data = new ArrayList<>();
+
+    private NewsHolder newsHolder = NewsHolder.getInstance();
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
@@ -69,8 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     private void initTabs() {
         viewPager = (ViewPager) findViewById(R.id.viewPager);
-        adapter = new TabsFragmentAdapter(getApplicationContext(), getSupportFragmentManager(), new ArrayList<NewsDTO>());
-        viewPager.setAdapter(adapter);
+        tabsFragmentAdapter = new TabsFragmentAdapter(getApplicationContext(), getSupportFragmentManager(), new ArrayList<NewsDTO>());
+        viewPager.setAdapter(tabsFragmentAdapter);
 
         new JSONParse().execute();
 
@@ -191,7 +193,8 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(List<NewsDTO> data) {
             if (pDialog.isShowing())
                 pDialog.dismiss();
-            adapter.setData(data);
+            tabsFragmentAdapter.setData(data);
+            newsHolder.setData(data);
         }
     }
 }

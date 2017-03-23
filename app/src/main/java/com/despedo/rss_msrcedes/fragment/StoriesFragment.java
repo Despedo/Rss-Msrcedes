@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.despedo.rss_msrcedes.NewsHolder;
 import com.despedo.rss_msrcedes.R;
 import com.despedo.rss_msrcedes.adapter.NewsListAdapter;
 import com.despedo.rss_msrcedes.dto.NewsDTO;
@@ -42,6 +43,12 @@ public class StoriesFragment extends AbstractFragment {
         rv.setAdapter(newsListAdapter);
 
         return view;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        refreshData(NewsHolder.getData());
     }
 
     public void setContext(Context context) {
