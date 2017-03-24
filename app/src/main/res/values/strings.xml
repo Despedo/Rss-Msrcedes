@@ -9,4 +9,7 @@
     <string name="settings">Settings</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="date">item_date</string>
+    <string name="link">item_link</string>
+    <string name="name">item_name</string>
 </resources>

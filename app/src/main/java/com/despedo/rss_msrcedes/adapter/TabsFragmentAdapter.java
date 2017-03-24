@@ -52,8 +52,8 @@ public class TabsFragmentAdapter extends FragmentPagerAdapter {
         favouritesFragment = FavouritesFragment.getInstance(context);
 
         tabs.put(0, storiesFragment);
-        tabs.put(1, favouritesFragment);
-        tabs.put(2, videoFragment);
+        tabs.put(1, videoFragment);
+        tabs.put(2, favouritesFragment);
     }
 
     public void refreshFragmentsData() {

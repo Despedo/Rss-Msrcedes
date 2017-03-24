@@ -37,7 +37,7 @@ public class StoriesFragment extends AbstractFragment {
 
         RecyclerView rv = (RecyclerView) view.findViewById(R.id.recycleViewStories);
         rv.setLayoutManager(new LinearLayoutManager(context));
-        newsListAdapter = new NewsListAdapter(NewsHolder.getData());
+        newsListAdapter = new NewsListAdapter(NewsHolder.getData(), context);
         rv.setAdapter(newsListAdapter);
 
         return view;
